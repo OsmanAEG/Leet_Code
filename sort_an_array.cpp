@@ -21,12 +21,3 @@ public:
     return nums;
   }
 };
-
-int main() {
-  std::vector<int> nums = {5,1,1,2,0,0};
-  const auto result = Solution().sortArray(nums);
-
-  for(int i = 0; i < result.size(); ++i) std::cout << result[i] << std::endl;
-
-  return 0;
-}
