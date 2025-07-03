@@ -17,8 +17,6 @@ public:
         ++num_it;
       }
 
-      std::cout << num_it << std::endl;
-
       ++idx;
       mult += num_it;
       c = word[idx];
