@@ -9,7 +9,7 @@ public:
 
     std::sort(nums.begin(), nums.end());
 
-    for(int i = 0; i < nums.size(); ++i) {
+    for(int i = 0; i < nums.size() - 2; ++i) {
       int l = i+1;
       int h = nums.size() - 1;
 

@@ -14,23 +14,23 @@ public:
       int mid = low + 1;
       int high = nums.size() - 1;
 
+      if(low > 0 && nums[low] == nums[low-1]) continue;
+
       while(mid < high) {
         const auto sum = nums[low] + nums[mid] + nums[high];
-
         if(sum > 0) {
           --high;
         } else if(sum < 0) {
           ++mid;
         } else {
           valid_sums.push_back({nums[low], nums[mid], nums[high]});
-          --high;
           ++mid;
+          --high;
+          while(nums[mid]  == nums[mid - 1]  && mid  < high) ++mid;
+          while(nums[high] == nums[high + 1] && high > mid)  --high;
         }
       }
     }
-
-    std::sort(valid_sums.begin(), valid_sums.end());
-    valid_sums.erase(std::unique(valid_sums.begin(), valid_sums.end()), valid_sums.end());
 
     return valid_sums;
   }
