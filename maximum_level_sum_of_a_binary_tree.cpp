@@ -1,5 +1,8 @@
+// LeetCode: 1339
+
 #include <algorithm>
 #include <climits>
+#include <unordered_map>
 
 // Definition for a binary tree node.
 struct TreeNode {
@@ -13,16 +16,28 @@ struct TreeNode {
 
 class Solution {
 public:
-  void search(TreeNode* root, int& lvl, int& max_val, int& max_lvl, int& sum) {
-    
+  std::unordered_map<int, int> sum;
+
+  void search(TreeNode* root, int lvl) {
+    sum[lvl] += root->val;
+
+    if(root->left  != nullptr) search(root->left,  lvl + 1);
+    if(root->right != nullptr) search(root->right, lvl + 1);
   }
 
   int maxLevelSum(TreeNode* root) {
-    int lvl = 0;
     int max_val = INT_MIN;
     int max_lvl = 0;
-    int sum = 0;
 
-    search(root, lvl, max_val, max_lvl, sum);
+    search(root, 1);
+
+    for(auto it = sum.begin(); it != sum.end(); ++it) {
+      if(it->second >= max_val) {
+        max_val = it->second;
+        max_lvl = it->first;
+      }
+    }
+
+    return max_lvl;
   }
 };
