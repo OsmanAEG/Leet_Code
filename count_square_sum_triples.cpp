@@ -10,8 +10,8 @@ public:
   }
 
   int countTriples(int n) {
-    std::map<int, int> ab;
-    
+    std::unordered_map<int, int> ab;
+
     int num = 0;
 
     for(int i = 1; i <= n; ++ i) {
